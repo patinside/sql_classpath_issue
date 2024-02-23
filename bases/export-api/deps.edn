@@ -1,8 +1,10 @@
 {:paths ["src" "resources"]
  :deps {com.taoensso/timbre {:mvn/version "5.1.2"}
         com.stuartsierra/component {:mvn/version "1.0.0"}
+        com.github.seancorfield/honeysql {:mvn/version "2.5.1091"}
         com.github.seancorfield/next.jdbc {:mvn/version "1.3.894"}
-        com.github.seancorfield/honeysql {:mvn/version "2.5.1091"}}
+        mysql/mysql-connector-java {:mvn/version "5.1.49"}
+        com.zaxxer/HikariCP {:mvn/version "5.0.1"}}
  :aliases {:test {:extra-paths ["test"]
                   :extra-deps {}}}
  :mvn/repos {"codeguru" {:url "https://d1osg35nybn3tt.cloudfront.net"}}}
