@@ -1,0 +1,7 @@
+{:deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        poly/export-api {:local/root "../../bases/export-api"}
+        poly/sql {:local/root "../../components/sql"}
+        poly/resources {:local/root "../../components/resources"}}
+
+ :aliases {:test {:extra-paths []
+                  :extra-deps  {}}}}

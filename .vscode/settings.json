@@ -1,0 +1,47 @@
+{
+  "calva.replConnectSequences": [
+    {
+      "projectType": "deps.edn",
+      "name": "local",
+      "afterCLJReplJackInCode": "(require 'dev.core)",
+      "cljsType": "none",
+      "menuSelections": {
+        "cljAliases": [
+          "dev",
+          "test",
+          "debugger"
+        ]
+      },
+      "jackInEnv": {
+        "LOCAL": "true"
+      }
+    },
+  ],
+  "calva.useTestExplorer": true,
+  "calva.paredit.killAlsoCutsToClipboard": true,
+  "calva.prettyPrintingOptions": {
+    "printEngine": "pprint",
+    "enabled": true,
+    "width": 120,
+    "maxLength": 50
+  },
+  "[clojure]": {
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.wordSeparators": "\t ()\"':,;~@#$%^&{}[]`",
+    "editor.autoClosingBrackets": "always",
+    "editor.autoClosingQuotes": "always",
+    "editor.formatOnType": true,
+    "editor.autoIndent": "full",
+    "editor.formatOnPaste": true,
+    "editor.matchBrackets": "never",
+    "editor.guides.indentation": false,
+    "editor.parameterHints.enabled": false,
+    "editor.unicodeHighlight.allowedCharacters": {
+      " ": true,
+      "꞉": true
+    }
+  },
+  "calva.highlight.enableBracketColors": true,
+  "calva.highlight.highlightActiveIndent": true,
+  "editor.bracketPairColorization.enabled": true
+}

@@ -1,0 +1,13 @@
+{:top-namespace "beop"
+ :interface-ns "interface"
+ :default-profile-name "default"
+ :compact-views #{}
+ :vcs {:auto-add false
+       :name "git"}
+ :tag-patterns {:release "[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9a-f]{5,40}"
+                :stable "stable-*"}
+ :projects {"data" {:alias "dat"
+                    :test {:teardown-fn project.data.test-setup/teardown}}
+            "export" {:alias "exp"
+                      :test {}}
+            "development" {:alias "dev"}}}

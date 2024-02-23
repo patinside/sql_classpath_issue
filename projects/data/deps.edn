@@ -1,0 +1,9 @@
+{:deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        poly/data-api {:local/root "../../bases/data-api"}
+        poly/sql {:local/root "../../components/sql"}
+        poly/resources {:local/root "../../components/resources"}}
+ :aliases {:test {:extra-deps {}
+                  :extra-paths ["test"]}
+           :resources {:extra-paths ["../../resources"]}
+           :uberjar {:extra-deps {uberdeps/uberdeps {:mvn/version "0.1.10"}}
+                     :main-opts ["-m" "uberdeps.uberjar" "--aliases" "aot:resources" "--main-class" "beop.data_api.core"]}}}

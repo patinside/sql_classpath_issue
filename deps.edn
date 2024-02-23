@@ -1,0 +1,36 @@
+{:aliases  {:dev {:extra-paths ["development/src"]
+
+                  :extra-deps {poly/data-api {:local-root "bases/data-api"}
+                               poly/export-api {:local-root "bases/export-api"}
+                               poly/resources {:local-root "components/resources"}
+                               poly/sql {:local-root "sql/resources"}
+                               org.clojure/clojure {:mvn/version "1.11.1"}
+                               joda-time/joda-time {:mvn/version "2.10.5"}
+                               ;; Log
+                               com.taoensso/timbre {:mvn/version "5.1.2"}
+                              ;; Stuart Sierra component
+                               com.stuartsierra/component {:mvn/version "1.0.0"}
+                              ;; SQL formater
+                               com.github.seancorfield/honeysql {:mvn/version "2.5.1091"}
+                              ;; SQL driver
+                               com.github.seancorfield/next.jdbc {:mvn/version "1.3.894"}
+                              ;; Clojure in sql
+                               com.layerware/hugsql {:mvn/version "0.5.1"}
+                               com.layerware/hugsql-adapter-next-jdbc {:mvn/version "0.5.1"
+                                                                       :exclusions [seancorfield/next.jdbc]}
+                               ;; Java driver for mysql
+                               mysql/mysql-connector-java {:mvn/version "5.1.49"}
+                               ;; Hikari Threadpool 
+                               com.zaxxer/HikariCP {:mvn/version "5.0.1"}}}
+
+            :test {:extra-paths ["components/sql/test"
+                                 "bases/data-api/test"
+                                 "bases/export-api/test"]}
+
+            :poly {:extra-deps {polylith/clj-poly {:git/url "https://github.com/polyfy/polylith.git"
+                                                   :sha "d239f8b2cfd950bf5c2f7a757e51b7aacf6e92ca"
+                                                   :deps/root "projects/poly"}
+                                org.apache.logging.log4j/log4j-api {:mvn/version "2.20.0"}
+                                org.apache.logging.log4j/log4j-slf4j-impl {:mvn/version "2.20.0"}}
+                   :main-opts ["-m" "polylith.clj.core.poly-cli.core"]}}
+ :mvn/repos {"codeguru" {:url "https://d1osg35nybn3tt.cloudfront.net"}}}

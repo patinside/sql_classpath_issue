@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql:5.7.42
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=participations
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=secret
