@@ -1,0 +1,65 @@
+name: (Reusable) Test Clojure projects
+
+on:
+  workflow_call:
+    secrets:
+      aws-access-key-id:
+        required: true
+      aws-secret-access-key:
+        required: true
+
+jobs:
+  test-clojure:
+    name: Test Clojure projects (reusable)
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - id: run-dependencies
+        name: Run dependencies
+        run: docker-compose up -d
+
+      - id: update-etc-hosts
+        name: Update /etc/hosts
+        run: echo 127.0.0.1 aws redis mongodb mysql | sudo tee -a /etc/hosts
+
+      - id: setup-java
+        name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "11"
+
+      - id: setup-clojure
+        name: Setup Clojure
+        uses: DeLaGuardo/setup-clojure@12.3
+        with:
+          cli: 1.10.3.1029
+
+      - id: cache-deps
+        name: Cache deps
+        uses: actions/cache@v4
+        with:
+          key: ${{ runner.os }}-all-deps-${{ hashFiles('deps.edn') }}
+          restore-keys: |
+            ${{ runner.os }}-all-deps-
+          path: |
+            ~/.m2/repository
+            ~/.gitlibs
+            ~/.deps.clj
+
+      - id: download-dependencies
+        name: Download dependencies for the development project
+        run: clojure -P -M:dev:poly
+
+      - id: check-polylith-structure
+        name: Check polylith structure
+        run: clojure -M:poly check since:release
+
+      - id: test
+        name: Run tests for changed projects
+        run: AWS_REGION=eu-west-1 AWS_CBOR_DISABLE=true clojure -M:poly test :project since:release
